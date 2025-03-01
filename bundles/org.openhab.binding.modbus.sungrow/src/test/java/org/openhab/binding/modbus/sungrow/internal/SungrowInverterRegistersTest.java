@@ -22,7 +22,6 @@ import org.junit.jupiter.api.Test;
 import org.openhab.core.io.transport.modbus.ModbusBitUtilities;
 import org.openhab.core.io.transport.modbus.ModbusRegisterArray;
 import org.openhab.core.library.types.DecimalType;
-import org.openhab.core.library.types.PercentType;
 import org.openhab.core.library.types.QuantityType;
 import org.openhab.core.types.State;
 
@@ -47,8 +46,8 @@ class SungrowInverterRegistersTest {
         assertEquals(BigDecimal.valueOf(1000), decimalTypeValue.toBigDecimal());
 
         State state = batteryLevelRegister.createState(decimalTypeValue);
-        assertInstanceOf(PercentType.class, state);
-        assertEquals("100.0", state.toFullString());
+        assertInstanceOf(QuantityType.class, state);
+        assertEquals("100 %", state.toFullString());
     }
 
     @Test
